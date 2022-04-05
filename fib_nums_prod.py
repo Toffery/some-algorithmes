@@ -6,7 +6,7 @@ for i in range(1, n):
 fib_list_prod = list(map(lambda x, y: x*y, fib_list, fib_list[1:]))
 
 
-def productFib(prod):
+def product_fib(prod):
     if prod in fib_list_prod:
         index = fib_list_prod.index(prod)
         return [fib_list[index], fib_list[index+1], True]
@@ -15,3 +15,10 @@ def productFib(prod):
         max_neg_elem = max(diff_list, key=lambda x: x<0)
         index = diff_list.index(max_neg_elem)
         return [fib_list[index], fib_list[index+1], False]
+
+
+def good_solution(prod):
+    a, b = 0, 1
+    while prod > a * b:
+        a, b = b, a + b
+    return [a, b, prod == a * b]
